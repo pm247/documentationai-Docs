@@ -1,0 +1,178 @@
+---
+title: Integrations and Extensions
+description: Connect MyCMO with third-party tools to enhance your documentation workflow and automate processes.
+---
+
+## Overview
+
+MyCMO supports seamless integrations with popular tools to streamline your documentation processes. Link your GitHub repositories for automatic syncing, set up webhooks for real-time notifications, import content from external sources, and export your docs in multiple formats. These integrations help you maintain up-to-date documentation without manual effort.
+
+<Callout kind="tip">
+Start with GitHub integration for the quickest setup. It enables automatic pulls from your repos.
+</Callout>
+
+## Available Integrations
+
+Explore the core integrations available in MyCMO.
+
+<Columns cols={2}>
+  <Card title="GitHub" icon="github" href="#github-integration">
+    Sync repositories and pull requests directly into your docs.
+  </Card>
+  <Card title="Webhooks" icon="zap" href="#webhooks">
+    Receive real-time updates for events like page publishes.
+  </Card>
+  <Card title="Content Import" icon="download" href="#importing-content">
+    Bring in Markdown, HTML, or API data from external sources.
+  </Card>
+  <Card title="Export Formats" icon="upload" href="#exporting">
+    Generate PDF, HTML, or Markdown exports.
+  </Card>
+</Columns>
+
+## GitHub Integration
+
+Connect MyCMO to GitHub to automatically import changes from your repositories.
+
+### Setup Steps
+
+<Steps>
+  <Step title="Authorize MyCMO" icon="key">
+    In your MyCMO dashboard, navigate to Integrations > GitHub and click "Connect". Grant repository access.
+  </Step>
+  <Step title="Select Repository" icon="git-branch">
+    Choose the repo containing your docs. MyCMO supports Markdown and MDX files.
+  </Step>
+  <Step title="Configure Sync" icon="refresh-cw">
+    Set sync frequency (e.g., on push or pull request). Test the connection.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  // Example GitHub webhook payload handler
+  app.post('/webhook/github', (req, res) => {
+    const event = req.headers['x-github-event'];
+    if (event === 'push') {
+      syncDocs(req.body.repository.full_name);
+    }
+    res.status(200).send('OK');
+  });
+  ```
+  ```python
+  # Example GitHub webhook handler
+  from flask import Flask, request
+
+  app = Flask(__name__)
+
+  @app.route('/webhook/github', methods=['POST'])
+  def github_webhook():
+      event = request.headers.get('X-GitHub-Event')
+      if event == 'push':
+          sync_docs(request.json['repository']['full_name'])
+      return 'OK', 200
+  ```
+</CodeGroup>
+
+## Webhooks
+
+Set up outgoing webhooks to notify external services of MyCMO events like page updates or publishes.
+
+### Common Events
+
+Use Tabs below for setup examples across languages.
+
+<Tabs>
+  <Tab title="Page Published" icon="publish">
+    <ParamField path="event" param-type="string">page.published</ParamField>
+    <ParamField body="pageId" param-type="string" required="true">
+      Unique page identifier.
+    </ParamField>
+    <ParamField body="url" param-type="string">
+      Published URL: `https://docs.example.com/page-slug`
+    </ParamField>
+
+    ```javascript
+    // Handle webhook payload
+    fetch('https://your-webhook-url.com/mycmo', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        event: 'page.published',
+        pageId: 'abc123',
+        url: 'https://docs.example.com/my-page'
+      })
+    });
+    ```
+  </Tab>
+  <Tab title="Content Updated" icon="edit-3">
+    Similar to publish, but triggers on content saves.
+
+    <Request tabs="cURL,JavaScript">
+      ```bash
+      curl -X POST https://your-webhook-url.com/mycmo \
+        -H "Content-Type: application/json" \
+        -d '{"event": "content.updated", "pageId": "abc123"}'
+      ```
+      ```javascript
+      // JS fetch example
+      await fetch('https://your-webhook-url.com/mycmo', {
+        method: 'POST',
+        body: JSON.stringify({ event: 'content.updated', pageId: 'abc123' })
+      });
+      ```
+    </Request>
+  </Tab>
+</Tabs>
+
+<Callout kind="alert">
+Secure your webhooks with `YOUR_SECRET` in the `X-MyCMO-Signature` header. Validate payloads to prevent unauthorized access.
+</Callout>
+
+## Importing Content
+
+Pull content from external APIs or files into MyCMO.
+
+<Expandable title="Advanced Import Options" default-open="false">
+Use the Import API endpoint at `https://api.example.com/v1/import`.
+
+<Response>
+  ```json
+  {
+    "success": true,
+    "importedPages": 5,
+    "source": "https://external-site.com/docs"
+  }
+  ```
+</Response>
+</Expandable>
+
+## Exporting Documentation
+
+Export your entire site or sections to various formats.
+
+<Tabs>
+  <Tab title="PDF" icon="file-text">
+    Generate printable PDFs via dashboard or API.
+  </Tab>
+  <Tab title="Markdown" icon="file">
+    Download raw Markdown for GitHub or other tools.
+  </Tab>
+  <Tab title="HTML" icon="globe">
+    Static HTML export for hosting anywhere.
+  </Tab>
+</Tabs>
+
+## Next Steps
+
+<Columns cols={3}>
+  <Card title="Quickstart" icon="play" href="/quickstart">
+    Set up your first integration.
+  </Card>
+  <Card title="API Reference" icon="code" href="/authentication">
+    Full API docs for advanced integrations.
+  </Card>
+  <Card title="Support" icon="help-circle" href="/help-center">
+    Get help with custom setups.
+  </Card>
+</Columns>

@@ -1,0 +1,125 @@
+---
+title: Core Features of MyCMO
+description: Explore the main capabilities of MyCMO to streamline your documentation management and team collaboration.
+---
+
+## Overview
+
+MyCMO provides powerful tools to organize, create, and maintain your project documentation. You can structure content hierarchically, format it with intuitive editors, track changes over time, and quickly find what you need through advanced search features. These capabilities help teams collaborate efficiently without losing context.
+
+<Columns cols={2}>
+  <Card title="Spaces & Folders" icon="folder" href="#structuring">
+    Organize docs into logical spaces and nested folders.
+  </Card>
+  <Card title="Rich Editing" icon="edit-3" href="#adding">
+    Add content with visual editors and embeds.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="#version">
+    Track edits and revert changes easily.
+  </Card>
+  <Card title="Search Tools" icon="search" href="#search">
+    Filter and discover docs instantly.
+  </Card>
+</Columns>
+
+## Structuring Documentation Spaces and Folders
+
+Create dedicated spaces for different projects or teams, then use folders to group related documents. This keeps your documentation scalable and easy to navigate.
+
+<Steps>
+  <Step title="Create a Space" icon="plus">
+    Navigate to the dashboard and select `New Space`. Enter a name like "API Docs" and set permissions for team members.
+  </Step>
+  <Step title="Add Folders" icon="folder-plus">
+    Inside the space, click `New Folder`. Name it "Endpoints" or "Guides" and drag documents into place.
+  </Step>
+  <Step title="Nest Folders" icon="layers">
+    Right-click a folder to create subfolders. Use this for deep hierarchies like "v1.0/Authentication".
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Use spaces for high-level separation (e.g., public vs. internal docs) and folders for granular organization.
+</Callout>
+
+## Adding and Formatting Content with Rich Text Editors
+
+MyCMO's editor supports rich text, Markdown, and embeds. Format headings, lists, tables, and more without coding.
+
+<Tabs>
+  <Tab title="Rich Text Editor" icon="edit-3">
+    Select the rich text mode for WYSIWYG editing. Add bold, italics, links, and images via the toolbar.
+
+````markdown
+**Bold text** for emphasis
+_Italic_ for subtle notes
+[Link to dashboard](https://dashboard.example.com)
+````
+  </Tab>
+  <Tab title="Markdown Support" icon="code">
+    Switch to Markdown for developers. Preview renders live.
+
+````markdown
+# Heading
+- List item
+`Inline code`
+```javascript
+console.log('Hello, MyCMO!');
+```
+````
+  </Tab>
+  <Tab title="Embeds" icon="link">
+    Paste URLs for automatic embeds from GitHub, YouTube, or Figma.
+
+    Example: Paste `https://github.com/MyCMO-com-au` to embed the repo overview.
+  </Tab>
+</Tabs>
+
+## Version Control and Change Tracking
+
+Every edit creates a version snapshot. You review diffs, restore previous versions, or compare changes across time.
+
+<Expandable title="How Versioning Works" default-open="true">
+  MyCMO automatically saves versions on each publish. Access history via the document menu.
+
+  ```mermaid
+  graph TD
+      A[Draft Edit] --> B[Publish]
+      B --> C[Version 1.0]
+      C --> D[Next Edit]
+      D --> E[Version 1.1]
+      E --> F[Compare/Revert]
+  ```
+</Expandable>
+
+<CodeGroup tabs="CLI,API">
+````bash
+# Via CLI tool
+mycmo version list --doc-id=123
+mycmo version revert --doc-id=123 --version=1.0
+````
+
+````javascript
+// API call
+const versions = await fetch('https://api.example.com/docs/123/versions');
+const data = await versions.json();
+console.log(data);
+````
+</CodeGroup>
+
+## Search and Filtering Tools for Documents
+
+Quickly locate documents with full-text search, tags, and filters. Search across spaces, folders, and content.
+
+| Feature | Description | Use Case |
+|---------|-------------|----------|
+| Full-Text Search | Matches keywords in titles and body | Find "authentication" across all docs |
+| Tag Filters | Apply tags like `api`, `internal` | Filter by topic or status |
+| Advanced Filters | Date range, author, space | Recent changes by team lead |
+| Saved Searches | Bookmark frequent queries | Weekly security review |
+
+<Callout kind="info">
+  Pro tip: Combine tags with search for precise results, like `token +api`.
+</Callout>
+
+These features form the foundation of MyCMO. Start by setting up a space and experiment with the editor to see immediate benefits in your workflow.

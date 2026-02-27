@@ -1,0 +1,118 @@
+---
+title: Changelog
+description: Track the latest updates, improvements, and bug fixes in MyCMO to stay informed on new features.
+---
+
+## Recent Updates
+
+<Callout kind="info">
+Stay up to date with MyCMO's latest releases. Check this changelog regularly for new features, improvements, and fixes that enhance your documentation management experience.
+</Callout>
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+## New Features
+
+- Added real-time collaboration for shared documentation projects
+- Introduced version history with diff viewer for tracking changes
+
+## Improvements
+
+- Enhanced search functionality with full-text indexing across all docs
+- Optimized dashboard loading times by `>30%`
+
+## Bug Fixes
+
+- Fixed markdown rendering issues with nested lists
+- Resolved export failures for large documentation sets
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["bugfix", "improvement"]}>
+## Improvements
+
+- Upgraded editor with better syntax highlighting for MDX and code blocks
+- Added keyboard shortcuts for common actions like `Ctrl+S` and `Ctrl+Z`
+
+## Bug Fixes
+
+- Corrected authentication token refresh logic to prevent session timeouts
+- Fixed sidebar navigation collapse on mobile devices
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+## New Features
+
+- Core documentation workspace with project organization
+- Integrated markdown editor and preview pane
+- Basic API for programmatic document management
+
+## Breaking Changes
+
+- Updated configuration format from YAML to JSON for better compatibility
+
+## Initial Setup
+
+- First stable release with essential features for documentation teams
+</Update>
+
+## Upgrading MyCMO
+
+Follow these steps to upgrade to the latest version and apply any necessary changes.
+
+<Steps>
+  <Step title="Backup Your Data" icon="database">
+    Export all projects to avoid data loss.
+  </Step>
+  <Step title="Update Package" icon="download">
+    <CodeGroup tabs="npm,yarn">
+    ````bash
+    npm install mycmo@latest
+    ````
+    ````bash
+    yarn add mycmo@latest
+    ````
+    </CodeGroup>
+  </Step>
+  <Step title="Migrate Config" icon="settings">
+    Update your config file if using v1.0.0 changes:
+    
+    ````json
+    {
+      "apiEndpoint": "https://api.example.com",
+      "apiKey": "YOUR_API_KEY"
+    }
+    ````
+  </Step>
+  <Step title="Restart Service" icon="refresh-cw">
+    Restart MyCMO to apply updates.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+After upgrading, review the [release notes](https://dashboard.example.com/releases) for migration guides specific to your setup.
+</Callout>
+
+## Upcoming Features
+
+<ExpandableGroup>
+  <Expandable title="AI-Powered Content Suggestions" default-open="true">
+    Coming in v1.3.0: Generate outlines and summaries using AI integration with your documentation content.
+  </Expandable>
+  <Expandable title="Advanced Permissions">
+    Granular role-based access control for teams and projects.
+  </Expandable>
+  <Expandable title="Webhook Integrations">
+    Real-time notifications to tools like Slack and GitHub.
+  </Expandable>
+</ExpandableGroup>
+
+<Columns cols={3}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Get started with the basics.
+  </Card>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your API access.
+  </Card>
+  <Card title="Configuration" icon="settings" href="/configuration">
+    Customize your workspace.
+  </Card>
+</Columns>

@@ -1,0 +1,140 @@
+---
+title: Getting Started with MyCMO
+description: Set up your MyCMO account and create your first documentation space in just a few minutes.
+---
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- A modern web browser like Chrome, Firefox, or Safari
+- A valid email address for account verification
+- Access to your email inbox for confirmation links
+
+<Callout kind="info">
+MyCMO works best on desktop browsers. Mobile support is available but optimized for larger screens.
+</Callout>
+
+## Create and Verify Your Account
+
+Follow these steps to sign up and get started.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Visit [https://dashboard.example.com/signup](https://dashboard.example.com/signup).
+
+    Enter your email address and create a strong password.
+
+    Click **Create Account**.
+  </Step>
+
+  <Step title="Verify Email" icon="mail">
+    Check your inbox for a verification email from MyCMO.
+
+    Click the verification link or enter the provided code on the dashboard.
+
+    Your account is now active.
+  </Step>
+
+  <Step title="Log In" icon="log-in">
+    Return to [https://dashboard.example.com/login](https://dashboard.example.com/login).
+
+    Sign in with your verified credentials.
+  </Step>
+</Steps>
+
+## Navigate the Dashboard
+
+The MyCMO dashboard provides an intuitive interface to manage your documentation spaces.
+
+<Tabs>
+  <Tab title="Spaces Overview" icon="layout">
+    View all your documentation spaces on the main dashboard.
+
+    Use the search bar to find existing projects or click **New Space** to create one.
+  </Tab>
+
+  <Tab title="Navigation Menu" icon="menu">
+    Access key sections via the sidebar:
+
+    - **Spaces**: Manage projects
+    - **Templates**: Use pre-built starters
+    - **Settings**: Configure account preferences
+    - **Help**: Access support resources
+  </Tab>
+</Tabs>
+
+## Set Up Your First Documentation Project
+
+Create your first space in seconds.
+
+<Steps>
+  <Step title="Create New Space" icon="plus">
+    From the dashboard, click **New Space**.
+
+    Enter a name like `My Project Docs` and select a template (e.g., Starter Kit).
+
+    Click **Create**.
+  </Step>
+
+  <Step title="Customize Structure" icon="settings">
+    Inside your space, add pages via **New Page**.
+
+    Organize with folders for sections like Guides, API, and Changelog.
+  </Step>
+</Steps>
+
+## Basic Editing and Saving Workflows
+
+MyCMO uses MDX for rich documentation. Edit pages directly in the visual editor.
+
+<CodeGroup tabs="Markdown,MDX">
+  ````markdown
+  # Welcome Page
+
+  This is your first **documentation** page.
+
+  - List item 1
+  - List item 2
+  ````
+
+  ````jsx
+  ---
+  title: Welcome
+  ---
+
+  ## Overview
+
+  This uses MDX components like `<Callout>` for notices.
+  ````
+</CodeGroup>
+
+Changes save automatically every 30 seconds. Use **Preview** to see live updates or **Publish** to make pages public.
+
+<Callout kind="tip">
+Enable version history in space settings to track changes over time.
+</Callout>
+
+## Next Steps
+
+Explore more features to level up your documentation.
+
+<Columns cols={3}>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your spaces with API keys and user roles.
+  </Card>
+
+  <Card title="Advanced Guides" icon="book-open" href="/guides">
+    Learn custom workflows and integrations.
+  </Card>
+
+  <Card title="Changelog" icon="git-branch" href="/changelog">
+    Stay updated with the latest releases.
+  </Card>
+</Columns>
+
+<Expandable title="Troubleshooting Common Issues" default-open="false">
+  - **Email not received?** Check spam folder or resend verification.
+  - **Editor not saving?** Ensure browser extensions aren't blocking.
+  - **Need help?** Visit the [Help Center](https://docs.example.com/help).
+</Expandable>
